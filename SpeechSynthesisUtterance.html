@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+</head>
+<body>
+<h3>Web Speech SpeechSynthesis</h3>
+<button id="button" onclick="toggleStartStop()"></button>
+ <script type="text/javascript">
+    var speaking;
+    var u = new SpeechSynthesisUtterance();
+    reset();
+     u.text = 'Hello World';
+     // u.lang = 'en-US';
+     u.lang = 'ja-JP';
+     u.rate = 1.2;
+     //u.onend = function(event) { alert('Finished in ' + event.elapsedTime + ' seconds.'); }
+
+     function reset() {
+      speaking = false;
+      button.innerHTML = "Click to Speak";
+     }
+
+     function toggleStartStop() {
+      if (speaking) {
+         speechSynthesis.cancel();
+         reset();
+      } else {
+         speechSynthesis.speak(u);
+         speaking = true;
+         button.innerHTML = "Click to Return";
+      }
+     }
+  </script>
+</body>
+</html>
